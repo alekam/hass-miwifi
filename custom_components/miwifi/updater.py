@@ -809,8 +809,8 @@ class LuciUpdater(DataUpdateCoordinator):
         :param data: dict
         """
 
-        if self.is_repeater:
-            return
+        #if self.is_repeater:
+        #    return
 
         response: dict = await self.luci.device_list()
 
