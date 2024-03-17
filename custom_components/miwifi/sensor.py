@@ -155,7 +155,7 @@ MIWIFI_SENSORS: tuple[SensorEntityDescription, ...] = (
         native_unit_of_measurement=PCS,
         state_class=SensorStateClass.MEASUREMENT,
         entity_registry_enabled_default=True,
-        precision=0
+        suggested_display_precision=0
     ),
     SensorEntityDescription(
         key=ATTR_SENSOR_DEVICES_LAN,
@@ -164,7 +164,7 @@ MIWIFI_SENSORS: tuple[SensorEntityDescription, ...] = (
         native_unit_of_measurement=PCS,
         state_class=SensorStateClass.MEASUREMENT,
         entity_registry_enabled_default=False,
-        precision=0
+        suggested_display_precision=0
     ),
     SensorEntityDescription(
         key=ATTR_SENSOR_DEVICES_2_4,
@@ -173,7 +173,7 @@ MIWIFI_SENSORS: tuple[SensorEntityDescription, ...] = (
         native_unit_of_measurement=PCS,
         state_class=SensorStateClass.MEASUREMENT,
         entity_registry_enabled_default=False,
-        precision=0
+        suggested_display_precision=0
     ),
     SensorEntityDescription(
         key=ATTR_SENSOR_DEVICES_5_0,
@@ -182,7 +182,7 @@ MIWIFI_SENSORS: tuple[SensorEntityDescription, ...] = (
         native_unit_of_measurement=PCS,
         state_class=SensorStateClass.MEASUREMENT,
         entity_registry_enabled_default=False,
-        precision=0
+        suggested_display_precision=0
     ),
     SensorEntityDescription(
         key=ATTR_SENSOR_DEVICES_GUEST,
@@ -191,7 +191,7 @@ MIWIFI_SENSORS: tuple[SensorEntityDescription, ...] = (
         native_unit_of_measurement=PCS,
         state_class=SensorStateClass.MEASUREMENT,
         entity_registry_enabled_default=False,
-        precision=0
+        suggested_display_precision=0
     ),
     SensorEntityDescription(
         key=ATTR_SENSOR_DEVICES_5_0_GAME,
@@ -200,7 +200,7 @@ MIWIFI_SENSORS: tuple[SensorEntityDescription, ...] = (
         native_unit_of_measurement=PCS,
         state_class=SensorStateClass.MEASUREMENT,
         entity_registry_enabled_default=False,
-        precision=0
+        suggested_display_precision=0
     ),
 )
 
