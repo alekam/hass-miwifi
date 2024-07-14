@@ -57,8 +57,8 @@ ICONS: Final = {
     f"{ATTR_SWITCH_WIFI_5_0_GAME}_{STATE_OFF}": "mdi:wifi-off",
     f"{ATTR_SWITCH_WIFI_GUEST}_{STATE_ON}": "mdi:wifi-lock-open",
     f"{ATTR_SWITCH_WIFI_GUEST}_{STATE_OFF}": "mdi:wifi-off",
-    f"{ATTR_SWITCH_QOS}_{STATE_ON}": "mdi:wifi",
-    f"{ATTR_SWITCH_QOS}_{STATE_OFF}": "mdi:wifi-off",
+    f"{ATTR_SWITCH_QOS}_{STATE_ON}": "mdi:wifi-plus",
+    f"{ATTR_SWITCH_QOS}_{STATE_OFF}": "mdi:wifi-minus",
 }
 
 MIWIFI_SWITCHES: tuple[SwitchEntityDescription, ...] = (
