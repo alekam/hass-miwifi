@@ -123,4 +123,5 @@ Many more Xiaomi and Redmi routers supported by MiWiFi
 | ![](images/R1D.png)    | **Mi Router R1D**                     |  R1D   | <sub>🟢🟢🟢🟢</sub> | <sub>🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🔴</sub> |  <sub>🟢🟢🟢🟢🟢</sub>  |
 | ![](images/RD03.png)   | **Xiaomi Router AX3000T**             |  RD03  | <sub>🟢🟢🟢🟢</sub> | <sub>🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🔴</sub> |  <sub>⚪⚪⚪⚪⚪</sub>  |
 | ![](images/RD15.png)   | **Xiaomi Router BE3600**              |  RD15  | <sub>🟢🟢🟢🟢</sub> | <sub>🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🔴</sub> |  <sub>⚪⚪⚪⚪⚪</sub>  |
+| ![](images/RC01.png)   | **Xiaomi 10 Gigabit Router** (Xiaomi Router 10000/BE10000/10G) |  RC01  | <sub>🟢🟢🟢🟢</sub> | <sub>🟢🔴🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢</sub> |  <sub>⚪⚪⚪⚪⚪</sub>  |
 
