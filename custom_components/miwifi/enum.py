@@ -252,3 +252,4 @@ class Model(str, Enum):
     RB08 = "rb08"  # 2022.07.04
     R4AV2 = "r4av2"  # 2022
     CB0401 = "cb0401"  # 2022
+    RC01 = "rc01"  # 2025
