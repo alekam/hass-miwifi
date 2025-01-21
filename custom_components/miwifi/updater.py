@@ -1074,9 +1074,8 @@ class LuciUpdater(DataUpdateCoordinator):
 
         self.data[ATTR_SENSOR_DEVICES] += 1
 
-        code: str = _device.get(ATTR_TRACKER_CONNECTION, Connection.LAN).name.replace(
-            "WIFI_", ""
-        )
+        connection = _device.get(ATTR_TRACKER_CONNECTION, Connection.LAN)
+        code: str = connection.name.replace("WIFI_", "") if connection else "lan"
         code = f"{ATTR_SENSOR_DEVICES}_{code}".lower()
 
         self.data[code] += 1
@@ -1118,7 +1117,7 @@ class LuciUpdater(DataUpdateCoordinator):
             else None,
             ATTR_TRACKER_NAME: device.get("name", device[ATTR_TRACKER_MAC]),
             ATTR_TRACKER_IP: ip_attr["ip"] if ip_attr is not None else None,
-            ATTR_TRACKER_CONNECTION: connection,
+            ATTR_TRACKER_CONNECTION: connection if connection is not None else Connection.LAN,
             ATTR_TRACKER_DOWN_SPEED: float(ip_attr["downspeed"])
             if ip_attr is not None
             and "downspeed" in ip_attr
