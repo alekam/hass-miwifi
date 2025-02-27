@@ -5,7 +5,7 @@ from __future__ import annotations
 import asyncio
 import logging
 
-from homeassistant.config_entries import ConfigEntry
+from homeassistant.config_entries import ConfigEntry, ConfigEntryState
 from homeassistant.const import (
     CONF_IP_ADDRESS,
     CONF_PASSWORD,
@@ -87,12 +87,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         :param with_sleep: bool
         """
 
-        await _updater.async_config_entry_first_refresh()
-        if not _updater.last_update_success:
-            if _updater.last_exception is not None:
-                raise PlatformNotReady from _updater.last_exception
-
-            raise PlatformNotReady
+        if entry.state == ConfigEntryState.SETUP_IN_PROGRESS:
+            await _updater.async_config_entry_first_refresh()
+            if not _updater.last_update_success:
+                if _updater.last_exception is not None:
+                    raise PlatformNotReady from _updater.last_exception
+                raise PlatformNotReady
+        else:
+            await _updater.async_refresh()
+            if not _updater.last_update_success:
+                if _updater.last_exception is not None:
+                    raise PlatformNotReady from _updater.last_exception
+                raise PlatformNotReady
 
         if with_sleep:
             await asyncio.sleep(DEFAULT_SLEEP)

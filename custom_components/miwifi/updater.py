@@ -76,6 +76,7 @@ from .const import (
     ATTR_UPDATE_TITLE,
     ATTR_WIFI_ADAPTER_LENGTH,
     ATTR_WIFI_DATA_FIELDS,
+    ATTR_SWITCH_QOS,
     DEFAULT_ACTIVITY_DAYS,
     DEFAULT_CALL_DELAY,
     DEFAULT_MANUFACTURER,
@@ -109,6 +110,7 @@ PREPARE_METHODS: Final = (
     "mode",
     "wan",
     "led",
+    "qos",
     "wifi",
     "channels",
     "devices",
@@ -638,6 +640,16 @@ class LuciUpdater(DataUpdateCoordinator):
 
         data[ATTR_LIGHT_LED] = False
 
+    async def _async_prepare_qos(self, data: dict) -> None:
+        """Prepare qos.
+
+        :param data: dict
+        """
+
+        response: dict = await self.luci.qos_info()
+
+        data[ATTR_SWITCH_QOS] = response["status"]["on"] == 1
+
     async def _async_prepare_wifi(self, data: dict) -> None:
         """Prepare wifi.
 
@@ -1062,9 +1074,8 @@ class LuciUpdater(DataUpdateCoordinator):
 
         self.data[ATTR_SENSOR_DEVICES] += 1
 
-        code: str = _device.get(ATTR_TRACKER_CONNECTION, Connection.LAN).name.replace(
-            "WIFI_", ""
-        )
+        connection = _device.get(ATTR_TRACKER_CONNECTION, Connection.LAN)
+        code: str = connection.name.replace("WIFI_", "") if connection else "lan"
         code = f"{ATTR_SENSOR_DEVICES}_{code}".lower()
 
         self.data[code] += 1
@@ -1106,7 +1117,7 @@ class LuciUpdater(DataUpdateCoordinator):
             else None,
             ATTR_TRACKER_NAME: device.get("name", device[ATTR_TRACKER_MAC]),
             ATTR_TRACKER_IP: ip_attr["ip"] if ip_attr is not None else None,
-            ATTR_TRACKER_CONNECTION: connection,
+            ATTR_TRACKER_CONNECTION: connection if connection is not None else Connection.LAN,
             ATTR_TRACKER_DOWN_SPEED: float(ip_attr["downspeed"])
             if ip_attr is not None
             and "downspeed" in ip_attr
